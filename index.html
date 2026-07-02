@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRL Racing | TorqueLINE Racing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="siteHeader" class="on-dark">
+  <div class="nav">
+    <a href="#slide-0" class="nav-logo" data-jump="0"><img src="logo.png" alt="TRL Racing 로고"></a>
+    <nav class="nav-links" id="navLinks">
+      <a data-jump="1">소개</a>
+      <a data-jump="2">멤버</a>
+      <a data-jump="3">전적</a>
+      <a data-jump="4">소식</a>
+      <a data-jump="5">갤러리</a>
+    </nav>
+    <button class="nav-cta" data-jump="6">JOIN US</button>
+    <button class="nav-toggle" aria-label="메뉴 열기" id="navToggle"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="dotnav" id="dotNav"></div>
+
+<div id="scroller">
+
+  <section class="slide hero" id="slide-0" data-theme="dark" data-label="Home">
+    <svg class="hero-line-svg" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M -50 650 C 150 650 200 500 350 480 C 480 462 520 380 480 300 C 440 220 520 150 620 160 C 740 172 760 300 880 300 C 1020 300 1080 180 1260 140" />
+    </svg>
+    <div class="hero-inner">
+      <div class="eyebrow rise">iRacing Sim Racing Team · Est. 2025</div>
+      <h1 class="rise">TRL<br><span class="accent">RACING</span></h1>
+      <div class="hero-sub rise">TorqueLINE Racing</div>
+      <p class="hero-tagline rise">새로운 도전을 즐기고 레이스를 통해 실력과 우정을 쌓아가는 팀</p>
+      <div class="hero-ctas rise">
+        <button class="btn btn-solid" data-jump="2">멤버 보기</button>
+        <button class="btn btn-outline" data-jump="3">전적 확인</button>
+      </div>
+    </div>
+    <div class="scroll-indicator"><span>Scroll</span><span class="bar"></span></div>
+  </section>
+
+  <section class="slide about" id="slide-1" data-theme="light" data-label="About">
+    <div class="wrap slide-inner">
+      <div class="about-grid">
+        <div>
+          <div class="section-head rise">
+            <div class="section-eyebrow">About TRL</div>
+            <h2>친구에서<br>팀으로</h2>
+          </div>
+          <div class="about-text rise">
+            <p>TRL Racing(TorqueLINE Racing)은 심레이싱을 즐겨하던 친구들이 모여 만든 심레이싱 팀입니다. 거창한 계획보다, 트랙 위에서 함께 보내는 시간과 서로의 실력을 끌어올리는 과정 자체를 목표로 시작했습니다.</p>
+            <p>정기적인 팀 레이스와 내구레이스에 참가하며, 각기 다른 드라이빙 페이스를 가지고 있으며, 각자의 환경에서 더 빠른 페이스를 만들어내기 위해 노력하고 있습니다.</p>
+          </div>
+        </div>
+        <div class="about-values rise">
+          <div class="value-row">
+            <span class="vnum">01</span>
+            <div><h3>함께 달리는 팀</h3><p>주 1회 팀 세션과 정기 레이스로 서로의 페이스를 맞춰갑니다.</p></div>
+          </div>
+          <div class="value-row">
+            <span class="vnum">02</span>
+            <div><h3>데이터로 말한다</h3><p>텔레메트리와 랩타임을 함께 분석하며 라인과 셋업을 공유합니다.</p></div>
+          </div>
+          <div class="value-row">
+            <span class="vnum">03</span>
+            <div><h3>포기없는 레이싱</h3><p>포기하지 않고 마지막 체커기까지 최선을 다하는 레이스를 추구합니다.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide roster" id="slide-2" data-theme="light" data-label="Roster">
+    <div class="wrap slide-inner">
+      <div class="section-head rise">
+        <div class="section-eyebrow">The Lineup</div>
+        <h2>멤버</h2>
+        <p>TRL Racing을 이끌어가는 드라이버들입니다.</p>
+      </div>
+      <div class="roster-grid rise" id="rosterGrid"></div>
+    </div>
+  </section>
+
+  <section class="slide results" id="slide-3" data-theme="dark" data-label="Results">
+    <div class="wrap slide-inner">
+      <div class="section-head rise">
+        <div class="section-eyebrow">Race Log</div>
+        <h2>최근 전적</h2>
+        <p>최근 팀 레이스 및 개인 레이스 결과입니다.</p>
+      </div>
+      <table class="results-table rise">
+        <thead><tr><th>날짜</th><th>이벤트</th><th>클래스</th><th>드라이버</th><th>순위</th></tr></thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="slide news" id="slide-4" data-theme="light" data-label="News">
+    <div class="wrap slide-inner">
+      <div class="section-head rise">
+        <div class="section-eyebrow">Team News</div>
+        <h2>소식</h2>
+      </div>
+      <div class="news-grid rise" id="newsGrid"></div>
+    </div>
+  </section>
+
+  <section class="slide gallery" id="slide-5" data-theme="light" data-label="Gallery">
+    <div class="wrap slide-inner">
+      <div class="section-head rise">
+        <div class="section-eyebrow">Race Weekends</div>
+        <h2>갤러리</h2>
+        <p>레이스 위켄드와 팀 세션의 순간들. 사진을 추가해 채워보세요.</p>
+      </div>
+      <div class="gallery-grid rise" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <section class="slide contact" id="slide-6" data-theme="dark" data-label="Contact">
+    <div class="wrap slide-inner">
+      <div class="section-head rise">
+        <div class="section-eyebrow">Join The Grid</div>
+        <h2>함께 달릴 준비 되셨나요?</h2>
+      </div>
+      <div class="contact-links rise">
+        <a class="contact-link" href="#">Discord</a>
+        <a class="contact-link" href="#">Instagram</a>
+        <a class="contact-link" href="mailto:contact@trlracing.gg">Email</a>
+      </div>
+      <div class="foot-row rise">
+        <img src="logo.png" alt="TRL Racing 로고">
+        <span class="foot-note">© 2026 TRL RACING — TORQUELINE RACING TEAM</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
