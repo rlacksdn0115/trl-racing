@@ -7,7 +7,7 @@ const helmetSVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.o
   <path d="M34 47c0-12 7-22 16-22s16 10 16 22" stroke="#D74D29" stroke-width="2.5"/>
 </svg>`;
 
-// 멤버 데이터 (한국어/영어 분리)
+// 멤버 데이터 (한국어/영어 분리 데이터 포함)
 const drivers = [
   {num:'01', name:'Junhee Kim', role:'on road', a:'720S GT3', b:'fav veh', c:'2010', d:'Birth',
     bio_ko:'모종의 이유로 현재 LMU 하는중 조만간 다시 복귀 예정', bio_en:'Currently playing LMU for certain reasons, returning soon.', track:'Favorite: SEBRING', helmetImg: 'junhee_helmet.png', base:'MOZA R12', pedal:'MOZA CRP2',  instagram:'jxnh_72'},
@@ -36,7 +36,9 @@ const news = [
 
 // 렌더링 함수들 (언어가 바뀔 때마다 다시 그려줌)
 function renderRoster() {
-  document.getElementById('rosterGrid').innerHTML = drivers.map(d=>`
+  const grid = document.getElementById('rosterGrid');
+  if (!grid) return;
+  grid.innerHTML = drivers.map(d=>`
     <div class="driver-card" tabindex="0" role="button" aria-expanded="false">
       <div class="driver-helmet">${d.helmetImg ? `<img src="${d.helmetImg}" alt="${d.name} 헬멧">` : helmetSVG}</div>
       <span class="driver-num">NO. ${d.num}</span>
@@ -57,11 +59,13 @@ function renderRoster() {
       </div>
     </div>
   `).join('');
-  attachRosterEvents(); // 다시 그려진 카드에 클릭/터치 이벤트 재부착
+  attachRosterEvents(); 
 }
 
 function renderResults() {
-  document.getElementById('resultsBody').innerHTML = results.map(r=>`
+  const tbody = document.getElementById('resultsBody');
+  if (!tbody) return;
+  tbody.innerHTML = results.map(r=>`
     <tr>
       <td>${r.date}</td><td>${r.event}</td><td class="class-cell">${r.cls}</td>
       <td>${r.driver}</td><td class="pos ${r.pos===1?'p1':''}">P${r.pos}</td>
@@ -70,7 +74,9 @@ function renderResults() {
 }
 
 function renderNews() {
-  document.getElementById('newsGrid').innerHTML = news.map(n=>`
+  const grid = document.getElementById('newsGrid');
+  if (!grid) return;
+  grid.innerHTML = news.map(n=>`
     <div class="news-card">
       <span class="news-date">${n.date}</span>
       <h3>${currentLang === 'ko' ? n.title_ko : n.title_en}</h3>
@@ -81,9 +87,11 @@ function renderNews() {
 }
 
 function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
   const trackSVG = `<svg viewBox="0 0 100 100" fill="none" stroke="#D74D29" stroke-width="3"><path d="M10 70 C 20 70 25 50 40 48 C 55 46 58 30 48 22 C 40 16 46 8 58 10 C 74 12 78 32 90 28"/></svg>`;
   const galleryLabels = ['Race Weekend 01','Team Session','Podium','Livery'];
-  document.getElementById('galleryGrid').innerHTML = galleryLabels.map(l=>`
+  grid.innerHTML = galleryLabels.map(l=>`
     <div class="g-item">${trackSVG}<span class="g-label">${l}</span></div>
   `).join('');
 }
@@ -103,21 +111,21 @@ function attachRosterEvents() {
   });
 }
 
-// 언어 변경 토글 이벤트
+// [복구 완료] 언어 변경 토글 이벤트 (EN 버튼)
 const langToggleBtn = document.getElementById('langToggle');
-langToggleBtn.addEventListener('click', () => {
-  currentLang = currentLang === 'ko' ? 'en' : 'ko';
-  langToggleBtn.textContent = currentLang === 'ko' ? 'EN' : 'KR';
-  
-  // HTML 내의 모든 .lang-text 속성 바꾸기
-  document.querySelectorAll('.lang-text').forEach(el => {
-    el.innerHTML = el.getAttribute(`data-${currentLang}`);
+if (langToggleBtn) {
+  langToggleBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'ko' ? 'en' : 'ko';
+    langToggleBtn.textContent = currentLang === 'ko' ? 'EN' : 'KR';
+    
+    document.querySelectorAll('.lang-text').forEach(el => {
+      el.innerHTML = el.getAttribute(`data-${currentLang}`);
+    });
+    
+    renderRoster();
+    renderNews();
   });
-  
-  // 데이터가 들어가는 동적 영역 다시 그리기
-  renderRoster();
-  renderNews();
-});
+}
 
 // 초기화
 renderRoster();
@@ -132,21 +140,24 @@ const header = document.getElementById('siteHeader');
 const navLinks = document.querySelectorAll('.nav-links a');
 
 const dotNav = document.getElementById('dotNav');
-slides.forEach((s,i)=>{
-  const b = document.createElement('button');
-  b.dataset.jump = i;
-  b.innerHTML = `<span class="dot-label">${s.dataset.label}</span>`;
-  dotNav.appendChild(b);
-});
-const dots = Array.from(dotNav.querySelectorAll('button'));
+if (dotNav) {
+  slides.forEach((s,i)=>{
+    const b = document.createElement('button');
+    b.dataset.jump = i;
+    b.innerHTML = `<span class="dot-label">${s.dataset.label}</span>`;
+    dotNav.appendChild(b);
+  });
+}
+const dots = dotNav ? Array.from(dotNav.querySelectorAll('button')) : [];
 
 function jumpTo(i){
-  slides[i].scrollIntoView({behavior:'smooth', block:'start'});
+  if (slides[i]) slides[i].scrollIntoView({behavior:'smooth', block:'start'});
 }
 document.querySelectorAll('[data-jump]').forEach(el=>{
   el.addEventListener('click', ()=> jumpTo(parseInt(el.dataset.jump,10)) );
 });
 
+// [추가 완료] 스크롤 시 감지하여 로고를 자동으로 스와핑하는 로직
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     const idx = slides.indexOf(entry.target);
@@ -156,32 +167,47 @@ const io = new IntersectionObserver((entries)=>{
       if(dots[idx]) dots[idx].classList.add('active');
       navLinks.forEach(a=>a.classList.toggle('active', parseInt(a.dataset.jump,10)===idx));
       
-      const isDark = entry.target.dataset.theme === 'dark';
-      header.classList.toggle('on-dark', isDark);
-      header.classList.toggle('on-light', !isDark);
-      const logoImg = header.querySelector('.nav-logo img');
-      if (logoImg) logoImg.src = isDark ? 'logo.png' : 'logo.png';
+      const isDark = entry.target.dataset.theme==='dark';
+      if (header) {
+        header.classList.toggle('on-dark', isDark);
+        header.classList.toggle('on-light', !isDark);
+        
+        // 헤더 배경 테마에 맞춰 로고 파일 교체 (logo.png vs logo_dark.png)
+        const logoImg = header.querySelector('.nav-logo img');
+        if (logoImg) {
+          logoImg.src = isDark ? 'logo_dark.png' : 'logo.png';
+        }
+      }
     }
   });
 }, {root:scroller, rootMargin:'-50% 0px -50% 0px', threshold:0});
 slides.forEach(s=>io.observe(s));
 
-// mobile nav toggle -> simple overlay list
+// 모바일 nav toggle -> simple overlay list
 const navToggle = document.getElementById('navToggle');
 const navLinksEl = document.getElementById('navLinks');
-navToggle.addEventListener('click', ()=>{
-  const open = navLinksEl.style.display === 'flex';
-  const isHeaderDark = header.classList.contains('on-dark');
-  
-  navLinksEl.style.cssText = open ? '' : `
-    display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;
-    background:${isHeaderDark ? 'rgba(0,0,0,0.96)' : 'rgba(255,255,255,0.98)'};
-    padding:20px 24px;gap:18px;font-size:15px;
-  `;
-  
-  const logoImg = header.querySelector('.nav-logo img');
-  if (logoImg && !open) logoImg.src = 'logo.png';
-});
+if (navToggle && navLinksEl) {
+  navToggle.addEventListener('click', ()=>{
+    const open = navLinksEl.style.display === 'flex';
+    navLinksEl.style.cssText = open ? '' : `
+      display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;
+      background:${header && header.classList.contains('on-dark')?'rgba(0,0,0,0.96)':'rgba(255,255,255,0.98)'};
+      padding:20px 24px;gap:18px;font-size:15px;
+    `;
+    
+    // 모바일 전체 메뉴가 켜지면 무조건 배경이 어두워지므로 다크 로고로 고정
+    if (header) {
+      const logoImg = header.querySelector('.nav-logo img');
+      if (logoImg) {
+        if (!open) {
+          logoImg.src = 'logo_dark.png';
+        } else {
+          logoImg.src = header.classList.contains('on-dark') ? 'logo_dark.png' : 'logo.png';
+        }
+      }
+    }
+  });
+}
 
 function setVH(){document.documentElement.style.setProperty('--vh100', window.innerHeight+'px');}
 if(!CSS.supports('height','100dvh')){ setVH(); window.addEventListener('resize', setVH); }
