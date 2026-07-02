@@ -10,15 +10,15 @@ const helmetSVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.o
 // 멤버 데이터 (한국어/영어 분리)
 const drivers = [
   {num:'01', name:'Junhee Kim', role:'on road', a:'720S GT3', b:'fav veh', c:'2010', d:'Birth',
-    bio_ko:'', bio_en:'Currently playing LMU for certain reasons, returning soon.', track:'Favorite: SEBRING', helmetImg: 'junhee_helmet.png', base:'MOZA R12', pedal:'MOZA CRP2',  instagram:'jxnh_72'},
+    bio_ko:'모종의 이유로 현재 LMU 하는중 조만간 다시 복귀 예정', bio_en:'Currently playing LMU for certain reasons, returning soon.', track:'Favorite: SEBRING', helmetImg: 'junhee_helmet.png', base:'MOZA R12', pedal:'MOZA CRP2',  instagram:'jxnh_72'},
   {num:'02', name:'Chanwoo Kim', role:'on road', a:'M4 GT3', b:'fav veh', c:'2009', d:'Birth',
-    bio_ko:'', bio_en:'Using G27 to save up, returning to iRacing soon.', track:'Favorite: Spa-Francorchamps', helmetImg: 'chanwoo_helmet.png', base:'LOGITECH G27', pedal:'LOGITECH G27', instagram:'cw__0115'},
+    bio_ko:'돈없어서 G27 사용중, 조만간 아이레이싱 복귀 예정', bio_en:'Using G27 to save up, returning to iRacing soon.', track:'Favorite: Spa-Francorchamps', helmetImg: 'chanwoo_helmet.png', base:'LOGITECH G27', pedal:'LOGITECH G27', instagram:'cw__0115'},
   {num:'03', name:'Jihoo Park', role:'on road', a:'SF-24', b:'fav veh', c:'2009', d:'Birth',
-    bio_ko:'', bio_en:'Enduring the full torque of R25 with his entire body.', track:'Favorite: LONG BEACH', helmetImg: 'jihoo_helmet.png', base: 'MOZA R25', pedal: 'MOZA SRP2', instagram:'ji_hoo324'},
+    bio_ko:'R25 풀토크를 온몸으로 견뎌내는 피들스틱', bio_en:'Enduring the full torque of R25 with his entire body.', track:'Favorite: LONG BEACH', helmetImg: 'jihoo_helmet.png', base: 'MOZA R25', pedal: 'MOZA SRP2', instagram:'ji_hoo324'},
   {num:'04', name:'Minsoo Seo', role:'on road', a:'GR86', b:'fav veh', c:'2010', d:'Birth',
-    bio_ko:'', bio_en:'Handles car setups with deep mechanical knowledge.', track:'Favorite: Interlagos', helmetImg: 'minsoo_helmet.png', base: 'MOZA R9 V2', pedal: 'MOZA CRP2', instagram:'m1nso0.10'},
+    bio_ko:'차량에 대한 깊은 지식으로 차량 셋업 위주로 담당', bio_en:'Handles car setups with deep mechanical knowledge.', track:'Favorite: Interlagos', helmetImg: 'minsoo_helmet.png', base: 'MOZA R9 V2', pedal: 'MOZA CRP2', instagram:'m1nso0.10'},
   {num:'05', name:'Taeyun Lee', role:'on road · team leader', a:'Por 935', b:'fav veh', c:'B 2009', d:'Birth',
-    bio_ko:'', bio_en:'Looking for a lovely lady to date, slide into DMs.', track:'Favorite: Nürburgring', helmetImg: 'taeyun_helmet.png', base: 'MOZA R5', pedal: 'MOZA CRP2', instagram:'t.xyn.09'},
+    bio_ko:'저랑 사귀실 어여쁜 여성분은 디엠 주십쇼', bio_en:'Looking for a lovely lady to date, slide into DMs.', track:'Favorite: Nürburgring', helmetImg: 'taeyun_helmet.png', base: 'MOZA R5', pedal: 'MOZA CRP2', instagram:'t.xyn.09'},
 ];
 
 const results = [
