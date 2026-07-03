@@ -357,3 +357,35 @@ header.on-dark .nav-cta:hover{background:var(--trl-white);color:var(--trl-black)
   .section-head h2 { font-size: 32px; }
   .driver-card{padding:14px 16px;}
 }
+
+/* =========================================
+   [모바일 탭(소개, 멤버, 소식) 가로 길이 최적화 추가 코드] 
+   ========================================= */
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+* {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 860px) {
+  .section-head { margin-bottom: 24px; }
+  .about-grid { gap: 32px; }
+  .value-row { padding: 12px 0; }
+  
+  .driver-card { padding: 18px !important; }
+  .driver-detail p { font-size: 12.5px; }
+  
+  .news-grid { gap: 16px; }
+  .news-card { padding-top: 12px; }
+  .news-card h3 { font-size: 17px; margin: 6px 0; }
+}
+
+@media (max-width: 520px) {
+  .value-row { grid-template-columns: 40px 1fr; gap: 12px; }
+  .driver-stats { flex-direction: column; gap: 8px; border-top: none; padding-top: 4px; }
+  .driver-stats > div { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E7E3DA; padding-top: 6px; }
+}

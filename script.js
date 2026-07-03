@@ -1,4 +1,4 @@
-// 현재 언어 상태 (기본: 한국어)
+// default lan
 let currentLang = 'ko';
 
 const helmetSVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -7,18 +7,32 @@ const helmetSVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.o
   <path d="M34 47c0-12 7-22 16-22s16 10 16 22" stroke="#D74D29" stroke-width="2.5"/>
 </svg>`;
 
-// 멤버 데이터 (한국어/영어 분리 데이터 포함)
+// roster data
 const drivers = [
-  {num:'01', name:'Junhee Kim', role:'on road', a:'720S GT3', b:'fav veh', c:'2010', d:'Birth',
-    bio_ko:' ', bio_en:' ', track:'Favorite: SEBRING', helmetImg: 'junhee_helmet.png', base:'MOZA R12', pedal:'MOZA CRP2',  instagram:'jxnh_72'},
-  {num:'02', name:'Chanwoo Kim', role:'on road', a:'M4 GT3', b:'fav veh', c:'2009', d:'Birth',
-    bio_ko:' ', bio_en:' ', track:'Favorite: Spa-Francorchamps', helmetImg: 'chanwoo_helmet.png', base:'LOGITECH G27', pedal:'LOGITECH G27', instagram:'cw__0115'},
-  {num:'03', name:'Jihoo Park', role:'on road', a:'SF-24', b:'fav veh', c:'2009', d:'Birth',
-    bio_ko:' ', bio_en:' ', track:'Favorite: LONG BEACH', helmetImg: 'jihoo_helmet.png', base: 'MOZA R25', pedal: 'MOZA SRP2', instagram:'ji_hoo324'},
-  {num:'04', name:'Minsoo Seo', role:'on road', a:'GR86', b:'fav veh', c:'2010', d:'Birth',
-    bio_ko:' ', bio_en:' ', track:'Favorite: Interlagos', helmetImg: 'minsoo_helmet.png', base: 'MOZA R9 V2', pedal: 'MOZA CRP2', instagram:'m1nso0.10'},
-  {num:'05', name:'Taeyun Lee', role:'on road · team leader', a:'Por 935', b:'fav veh', c:'B 2009', d:'Birth',
-    bio_ko:' ', bio_en:' ', track:'Favorite: Nürburgring', helmetImg: 'taeyun_helmet.png', base: 'MOZA R5', pedal: 'MOZA CRP2', instagram:'t.xyn.09'},
+  {num:'01', name:'Junhee Kim', a:'720S GT3', c:'2010',
+    role_ko:'온 로드', role_en:'on road', b_ko:'선호 차량', b_en:'fav veh', d_ko:'생년', d_en:'Birth',
+    bio_ko:' ', bio_en:' ', 
+    track_ko:'최애 트랙: SEBRING', track_en:'Favorite: SEBRING', helmetImg: 'junhee_helmet.png', base:'MOZA R12', pedal:'MOZA CRP2', instagram:'jxnh_72'},
+    
+  {num:'02', name:'Chanwoo Kim', a:'M4 GT3', c:'2009',
+    role_ko:'온 로드', role_en:'on road', b_ko:'선호 차량', b_en:'fav veh', d_ko:'생년', d_en:'Birth',
+    bio_ko:' ', bio_en:' ', 
+    track_ko:'최애 트랙: Spa-Francorchamps', track_en:'Favorite: Spa-Francorchamps', helmetImg: 'chanwoo_helmet.png', base:'LOGITECH G27', pedal:'LOGITECH G27', instagram:'cw__0115'},
+    
+  {num:'03', name:'Jihoo Park', a:'SF-24', c:'2009',
+    role_ko:'온 로드', role_en:'on road', b_ko:'선호 차량', b_en:'fav veh', d_ko:'생년', d_en:'Birth',
+    bio_ko:' ', bio_en:' ', 
+    track_ko:'최애 트랙: LONG BEACH', track_en:'Favorite: LONG BEACH', helmetImg: 'jihoo_helmet.png', base: 'MOZA R25', pedal: 'MOZA SRP2', instagram:'ji_hoo324'},
+    
+  {num:'04', name:'Minsoo Seo', a:'GR86', c:'2010',
+    role_ko:'온 로드', role_en:'on road', b_ko:'선호 차량', b_en:'fav veh', d_ko:'생년', d_en:'Birth',
+    bio_ko:' ', bio_en:' ', 
+    track_ko:'최애 트랙: Interlagos', track_en:'Favorite: Interlagos', helmetImg: 'minsoo_helmet.png', base: 'MOZA R9 V2', pedal: 'MOZA CRP2', instagram:'m1nso0.10'},
+    
+  {num:'05', name:'Taeyun Lee', a:'Por 935', c:'2009',
+    role_ko:'온 로드 · 팀 리더', role_en:'on road · team leader', b_ko:'선호 차량', b_en:'fav veh', d_ko:'생년', d_en:'Birth',
+    bio_ko:' ', bio_en:' ', 
+    track_ko:'최애 트랙: Nürburgring', track_en:'Favorite: Nürburgring', helmetImg: 'taeyun_helmet.png', base: 'MOZA R5', pedal: 'MOZA CRP2', instagram:'t.xyn.09'},
 ];
 
 const results = [
@@ -34,19 +48,20 @@ const news = [
   {date:'2026.03.22', title_ko:'Nürburgring Endurance Cup 4H 레이스 P26 완주', title_en:'P26 finish at Nürburgring 4H', body_ko:'Nürburgring Endurance Cup 4H 레이스에서 최종 26등으로 안전하게 완주하였습니다.', body_en:'Safely finished P26 overall in the Nürburgring Endurance Cup 4H race.'}
 ];
 
-// 렌더링 함수들 (언어가 바뀔 때마다 다시 그려줌)
+// render fns
 function renderRoster() {
   const grid = document.getElementById('rosterGrid');
   if (!grid) return;
+  
   grid.innerHTML = drivers.map(d=>`
     <div class="driver-card" tabindex="0" role="button" aria-expanded="false">
       <div class="driver-helmet">${d.helmetImg ? `<img src="${d.helmetImg}" alt="${d.name} 헬멧">` : helmetSVG}</div>
       <span class="driver-num">NO. ${d.num}</span>
       <div class="driver-name">${d.name}</div>
-      <div class="driver-role">${d.role}</div>
+      <div class="driver-role">${currentLang === 'ko' ? d.role_ko : d.role_en}</div>
       <div class="driver-detail">
         <p>${currentLang === 'ko' ? d.bio_ko : d.bio_en}</p>
-        <span class="detail-track">${d.track}</span>
+        <span class="detail-track">${currentLang === 'ko' ? d.track_ko : d.track_en}</span>
         <div class="driver-equip">
           <div><span>BASE</span><strong>${d.base || '-'}</strong></div>
           <div><span>PEDAL</span><strong>${d.pedal || '-'}</strong></div>
@@ -54,8 +69,8 @@ function renderRoster() {
         </div>
       </div>
       <div class="driver-stats">
-        <div><div class="stat-val">${d.a}</div><div class="stat-label">${d.b}</div></div>
-        <div><div class="stat-val">${d.c}</div><div class="stat-label">${d.d}</div></div>
+        <div><div class="stat-val">${d.a}</div><div class="stat-label">${currentLang === 'ko' ? d.b_ko : d.b_en}</div></div>
+        <div><div class="stat-val">${d.c}</div><div class="stat-label">${currentLang === 'ko' ? d.d_ko : d.d_en}</div></div>
       </div>
     </div>
   `).join('');
@@ -111,7 +126,7 @@ function attachRosterEvents() {
   });
 }
 
-// [복구 완료] 언어 변경 토글 이벤트 (EN 버튼)
+// ENG lan toggle event
 const langToggleBtn = document.getElementById('langToggle');
 if (langToggleBtn) {
   langToggleBtn.addEventListener('click', () => {
