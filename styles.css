@@ -394,3 +394,8 @@ html, body {
   .driver-stats { flex-direction: column; gap: 8px; border-top: none; padding-top: 4px; }
   .driver-stats > div { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E7E3DA; padding-top: 6px; }
 }
+
+/* --- 🚨 피그마 캡처용 임시 무적 코드 (캡처 끝나면 꼭 지우기!) --- */
+#scroller { height: auto !important; overflow: visible !important; }
+.slide { min-height: 100vh !important; height: auto !important; }
+.rise { opacity: 1 !important; transform: none !important; }
