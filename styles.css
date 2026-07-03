@@ -340,7 +340,12 @@ header.on-dark .nav-cta:hover{background:var(--trl-white);color:var(--trl-black)
   .about-grid{grid-template-columns:1fr;gap:26px;}
   .roster-grid{flex-direction:column;min-height:0;}
   
-  .driver-card{flex-grow:0 !important; padding: 18px 20px;}
+  .driver-card {
+    flex: none !important; /* PC용 고무줄 속성 강제 해제 (납작해짐 방지) */
+    height: auto !important; /* 내용물에 맞춰 높이가 자연스럽게 잡히도록 설정 */
+    min-height: 85px; /* 카드가 닫혀있을 때 헬멧과 이름이 보일 수 있는 최소 높이 확보 */
+    padding: 24px 20px !important;
+  }
   .driver-card.expanded{background:var(--trl-black);color:var(--trl-white);}
   .driver-card:hover .driver-detail, .driver-card.expanded .driver-detail { max-height: 250px; }
   
