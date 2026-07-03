@@ -27,10 +27,8 @@ button{font:inherit;background:none;border:none;cursor:pointer;color:inherit;}
 
 /* ---------- SCROLL SLIDE CONTAINER ---------- */
 #scroller{
-  height:var(--vh100);
-  overflow-y:scroll;
-  overflow-x:hidden;
-  scroll-behavior:smooth;
+  height: auto; 
+  overflow: visible; 
 }
 .slide{
   position:relative;
