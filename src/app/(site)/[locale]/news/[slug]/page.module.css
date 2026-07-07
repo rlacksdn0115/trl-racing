@@ -1,0 +1,111 @@
+.header {
+  padding-block: 150px var(--space-7);
+  background: var(--trl-black);
+  border-bottom: 1px solid var(--trl-border);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+}
+
+.category {
+  color: var(--trl-orange);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.date,
+.author {
+  color: var(--trl-gray-500);
+}
+
+.title {
+  /* 본문에는 Display 폰트를 쓰지 않지만 제목은 대형 (design.md §15) */
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--trl-white);
+  margin-top: var(--space-4);
+}
+
+.article {
+  background: var(--trl-charcoal);
+}
+
+.cover {
+  margin-bottom: var(--space-7);
+  border: 1px solid var(--trl-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.coverImage {
+  width: 100%;
+  height: auto;
+}
+
+.body {
+  color: var(--trl-gray-100);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.related {
+  margin-top: var(--space-8);
+}
+
+.relatedTitle {
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--trl-orange);
+  margin-bottom: var(--space-5);
+  text-transform: uppercase;
+}
+
+.pager {
+  background: var(--trl-black);
+  border-top: 1px solid var(--trl-border);
+  padding-block: var(--space-6);
+}
+
+.pagerInner {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.pagerLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--trl-gray-100);
+  font-size: var(--text-sm);
+  transition: color 0.18s ease;
+  max-width: 45%;
+}
+
+.pagerLink:hover {
+  color: var(--trl-orange-hover);
+}
+
+.pagerNext {
+  text-align: right;
+}
+
+.pagerLabel {
+  display: block;
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--trl-gray-500);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}

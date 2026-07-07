@@ -1,0 +1,42 @@
+.heading {
+  margin-bottom: var(--space-7);
+}
+
+.label {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  color: var(--trl-orange);
+}
+
+.no {
+  color: var(--trl-gray-500);
+}
+
+.title {
+  font-family: var(--font-brand), var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--trl-white);
+  margin-top: var(--space-3);
+  text-transform: uppercase;
+}
+
+.desc {
+  font-size: var(--text-base);
+  color: var(--trl-gray-300);
+  margin-top: var(--space-3);
+  max-width: 60ch;
+}
+
+/* --bp-md */
+@media (min-width: 768px) {
+  .heading {
+    margin-bottom: var(--space-8);
+  }
+
+  .title {
+    font-size: var(--text-4xl);
+  }
+}

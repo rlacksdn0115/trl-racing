@@ -1,0 +1,192 @@
+/* design.md §10 — Hero */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding-block: 112px var(--space-6);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(232, 74, 37, 0.07), transparent),
+    var(--trl-black);
+}
+
+/* ---------- 배경 영상 ---------- */
+
+.videoWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.videoFrame,
+.videoEl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 178svh); /* 16:9 커버 */
+  height: max(100svh, 56.25vw);
+  transform: translate(-50%, -50%);
+  border: 0;
+  object-fit: cover;
+}
+
+/* design.md §10.1 배경 오버레이 */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(10, 11, 9, 0.92) 0%, rgba(10, 11, 9, 0.58) 48%, rgba(10, 11, 9, 0.36) 100%),
+    linear-gradient(0deg, rgba(10, 11, 9, 0.9) 0%, transparent 55%);
+}
+
+.racingLine {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 10%;
+  z-index: 1;
+  width: 100%;
+  height: 40%;
+}
+
+/* 모바일에서 레이싱 라인 단순화/제거 (design.md §8.1) */
+@media (max-width: 767px) {
+  .racingLine {
+    display: none;
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.eyebrow {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  color: var(--trl-gray-300);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: clamp(3.75rem, 8vw, 10rem); /* --text-hero, 모바일 최소 3.75rem */
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  margin-top: var(--space-4);
+  text-transform: uppercase;
+}
+
+.titleWhite,
+.titleOrange {
+  font-family: var(--font-brand), var(--font-display);
+}
+
+.titleWhite {
+  color: var(--trl-white);
+}
+
+.titleOrange {
+  color: var(--trl-orange);
+}
+
+.subLabel {
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  letter-spacing: 0.22em;
+  color: var(--trl-gray-500);
+  margin-top: var(--space-4);
+}
+
+.slogan {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--trl-white);
+  margin-top: var(--space-5);
+}
+
+.intro {
+  font-size: var(--text-base);
+  color: var(--trl-gray-300);
+  max-width: 44ch;
+  margin-top: var(--space-3);
+}
+
+.noRace {
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  color: var(--trl-gray-500);
+  border: 1px dashed var(--trl-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.scrollLabel {
+  font-family: var(--font-data);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--trl-gray-500);
+}
+
+.scrollBar {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(var(--trl-orange), transparent);
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scaleY(0.7);
+  }
+}
+
+/* --bp-lg */
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: var(--space-7);
+  }
+}
+
+@media (max-height: 760px) and (min-width: 768px) {
+  .hero {
+    padding-block: 88px var(--space-5);
+  }
+}

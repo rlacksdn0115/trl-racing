@@ -1,0 +1,166 @@
+/* design.md §12.2 — 멤버 상세: 좌측 이미지 / 우측 데이터 */
+
+.hero {
+  position: relative;
+  padding-block: 140px var(--space-8);
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(232, 74, 37, 0.06), transparent),
+    var(--trl-black);
+  border-bottom: 1px solid var(--trl-border);
+  overflow: hidden;
+}
+
+.watermark {
+  position: absolute;
+  top: 60px;
+  right: -0.05em;
+  font-family: var(--font-brand), var(--font-display);
+  font-size: clamp(12rem, 30vw, 26rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--trl-white);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+.heroInner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+}
+
+.imageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--trl-charcoal);
+  border: 1px solid var(--trl-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-7);
+}
+
+.image {
+  width: min(320px, 70%);
+  height: auto;
+  object-fit: contain;
+}
+
+.number {
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  letter-spacing: 0.16em;
+  color: var(--trl-orange);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--trl-white);
+  margin-top: var(--space-3);
+  text-transform: uppercase;
+}
+
+.role {
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  color: var(--trl-gray-500);
+  margin-top: var(--space-2);
+  text-transform: uppercase;
+}
+
+.bio {
+  color: var(--trl-gray-300);
+  max-width: 56ch;
+  margin-top: var(--space-5);
+}
+
+.dataGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+.dataRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--trl-border);
+  padding-bottom: var(--space-3);
+}
+
+.dataLabel {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--trl-gray-500);
+  text-transform: uppercase;
+}
+
+.dataValue {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--trl-white);
+  text-align: right;
+}
+
+.instagramLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--trl-gray-100);
+  transition: color 0.18s ease;
+}
+
+.instagramLink:hover {
+  color: var(--trl-orange-hover);
+}
+
+.historySection {
+  background: var(--trl-charcoal);
+}
+
+.historyTitle {
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--trl-orange);
+  margin-bottom: var(--space-6);
+  text-transform: uppercase;
+}
+
+.raceList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.emptyRaces {
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  color: var(--trl-gray-500);
+  border: 1px dashed var(--trl-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+/* --bp-md */
+@media (min-width: 768px) {
+  .heroInner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: var(--space-8);
+  }
+
+  .dataGrid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-7);
+  }
+}

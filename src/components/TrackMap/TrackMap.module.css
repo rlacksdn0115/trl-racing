@@ -1,0 +1,13 @@
+.map {
+  width: 100%;
+  height: auto;
+  color: var(--trl-gray-500);
+}
+
+.placeholder {
+  opacity: 0.55;
+}
+
+.active {
+  color: var(--trl-orange);
+}

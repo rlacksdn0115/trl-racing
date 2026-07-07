@@ -1,0 +1,122 @@
+/* 홈 — 섹션 배경 변화는 작고 절제되게 (design.md §5.2) */
+
+.aboutSection {
+  background: var(--trl-black);
+}
+
+.membersSection {
+  background: var(--trl-charcoal);
+}
+
+.resultsSection {
+  background: var(--trl-surface);
+}
+
+.newsSection {
+  background: var(--trl-black);
+}
+
+.gallerySection {
+  background: var(--trl-charcoal);
+}
+
+.aboutQuote {
+  font-family: var(--font-brand), var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--trl-white);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+}
+
+.quoteOrange {
+  color: var(--trl-orange);
+}
+
+.aboutText {
+  max-width: 68ch;
+  color: var(--trl-gray-300);
+}
+
+.driverGrid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 82vw);
+  gap: var(--space-5);
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-block: var(--space-1) var(--space-3);
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--trl-gray-700) transparent;
+}
+
+.driverGrid > * {
+  scroll-snap-align: start;
+}
+
+.driverGrid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.driverGrid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.driverGrid::-webkit-scrollbar-thumb {
+  background: var(--trl-gray-700);
+  border-radius: 999px;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.newsRest {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.moreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  color: var(--trl-gray-300);
+  margin-top: var(--space-6);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--trl-gray-700);
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.moreLink:hover {
+  color: var(--trl-orange-hover);
+  border-color: var(--trl-orange);
+}
+
+/* --bp-sm */
+@media (min-width: 640px) {
+  .driverGrid {
+    grid-auto-columns: minmax(280px, 42vw);
+  }
+
+  .newsRest {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --bp-lg */
+@media (min-width: 1024px) {
+  .driverGrid {
+    grid-auto-columns: minmax(250px, 19vw);
+    gap: var(--space-5);
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "meta": {
+    "title": "TRL Racing — TorqueLINE Racing",
+    "description": "TRL Racing은 iRacing을 중심으로 활동하며, 경험과 데이터를 공유해 함께 성장하는 대한민국 심레이싱 팀입니다. Race Together. Improve Together."
+  },
+  "nav": {
+    "about": "소개",
+    "members": "멤버",
+    "races": "경기",
+    "schedule": "일정",
+    "results": "전적",
+    "news": "소식",
+    "gallery": "갤러리",
+    "join": "JOIN US",
+    "menu": "메뉴",
+    "close": "닫기",
+    "langToggle": "ENG",
+    "langToggleAria": "Switch to English"
+  },
+  "common": {
+    "viewAll": "전체 보기",
+    "readMore": "자세히 보기",
+    "viewDetail": "상세 보기",
+    "backToList": "목록으로",
+    "empty": "등록된 콘텐츠가 없습니다."
+  },
+  "hero": {
+    "eyebrow": "SIM RACING TEAM · EST. 2025",
+    "subLabel": "TORQUELINE RACING",
+    "slogan": "Race Together. Improve Together.",
+    "intro": "iRacing을 중심으로 경험과 데이터를 공유하며 함께 성장하는 대한민국 심레이싱 팀.",
+    "scroll": "SCROLL"
+  },
+  "raceStatus": {
+    "upcoming": "예정",
+    "live": "진행 중",
+    "completed": "완료",
+    "cancelled": "취소"
+  },
+  "nextRace": {
+    "label": "NEXT OFFICIAL RACE",
+    "days": "일",
+    "hours": "시간",
+    "minutes": "분",
+    "seconds": "초",
+    "circuit": "서킷",
+    "length": "경기 길이",
+    "platform": "참가 플랫폼",
+    "lineup": "출전 드라이버",
+    "carClass": "차량 / 클래스",
+    "startsAt": "경기 시작",
+    "noRace": "예정된 경기가 없습니다.",
+    "countdownAria": "경기 시작까지 남은 시간"
+  },
+  "home": {
+    "about": {
+      "no": "01",
+      "label": "ABOUT",
+      "title": "WHO WE ARE",
+      "desc": "함께 달리고 함께 성장하는 대한민국 심레이싱 팀"
+    },
+    "members": {
+      "no": "02",
+      "label": "MEMBERS",
+      "title": "TEAM DRIVERS",
+      "desc": "함께 달리고 함께 성장하는 TRL Racing의 드라이버"
+    },
+    "results": {
+      "no": "03",
+      "label": "RESULTS",
+      "title": "RECENT RESULTS",
+      "desc": "최근 경기 기록"
+    },
+    "news": {
+      "no": "04",
+      "label": "NEWS",
+      "title": "LATEST NEWS",
+      "desc": "TRL Racing의 최신 소식"
+    },
+    "gallery": {
+      "no": "05",
+      "label": "GALLERY",
+      "title": "MOMENTS",
+      "desc": "트랙 위의 순간들"
+    }
+  },
+  "about": {
+    "title": "팀 소개",
+    "heroLabel": "ABOUT TRL RACING",
+    "identity": "TRL Racing은 함께 달리고 함께 성장하는 것을 목표로 하는 대한민국 심레이싱 팀입니다. 우리는 단순히 빠른 랩타임을 추구하는 팀이 아니라, 서로의 경험과 데이터를 공유하며 더 나은 드라이버로 성장하는 과정을 가장 중요하게 생각합니다.",
+    "activity": "iRacing을 중심으로 다양한 레이스와 엔듀런스 이벤트에 참가하며, 팀워크와 일관성, 그리고 깨끗한 레이스 문화를 바탕으로 경쟁하고 있습니다. 매 레이스는 새로운 도전이며, 우리는 철저한 준비와 꾸준한 연습을 통해 최고의 결과를 만들어갑니다.",
+    "culture": "TRL Racing은 실력보다 열정을 먼저 봅니다. 서로를 존중하고, 함께 배우며, 한계를 넘어서는 과정 속에서 더욱 강한 팀이 된다고 믿습니다. 앞으로도 우리는 국내를 넘어 세계 무대에서도 경쟁할 수 있는 팀을 목표로 끊임없이 도전할 것입니다.",
+    "philosophyTitle": "TEAM PHILOSOPHY",
+    "philosophy1Title": "함께 달리는 팀",
+    "philosophy1": "개인 플레이에 머무르지 않고 함께 연습하고 레이스에 참가합니다. 각자의 역할을 수행하면서도 팀 전체의 결과와 성장을 함께 고려합니다.",
+    "philosophy2Title": "함께 성장하는 팀",
+    "philosophy2": "랩타임과 순위뿐 아니라 준비와 연습을 통해 발전하는 과정을 중요하게 생각합니다. 주행 경험, 전략, 셋업과 데이터를 공유하며 서로의 실력 향상을 돕습니다.",
+    "philosophy3Title": "깨끗하게 경쟁하는 팀",
+    "philosophy3": "상대 드라이버를 존중하고 공정하고 깨끗한 레이스 문화를 유지합니다. 일관된 주행과 책임감 있는 레이스로 결과를 만들어갑니다.",
+    "activityTitle": "ACTIVITY",
+    "activity1Title": "iRacing 기반 심레이싱",
+    "activity1": "iRacing의 다양한 차량과 서킷, 공식 레이스와 커뮤니티 이벤트를 기반으로 팀 훈련과 대회 참가를 진행합니다.",
+    "activity2Title": "엔듀런스 이벤트",
+    "activity2": "장시간 엔듀런스 레이스에서 드라이버 협업, 일관된 랩타임, 교대와 전략 등 팀 단위 레이스를 수행합니다.",
+    "activity3Title": "데이터 공유",
+    "activity3": "랩타임, 텔레메트리, 레이싱 라인, 셋업과 전략을 공유하며 팀 전체의 경쟁력을 높입니다.",
+    "valuesTitle": "TEAM VALUES",
+    "values": "팀워크 · 성장 · 일관성 · 존중 · 깨끗한 레이스",
+    "visionTitle": "VISION",
+    "vision": "대한민국을 넘어 세계 무대에서 경쟁할 수 있는 심레이싱 팀으로 성장한다."
+  },
+  "member": {
+    "listTitle": "TEAM DRIVERS",
+    "listDesc": "TRL Racing의 온로드 드라이버",
+    "role": { "driver": "드라이버", "leader": "팀 리더" },
+    "teamLeader": "TEAM LEADER",
+    "favoriteCar": "선호 차량",
+    "favoriteTrack": "선호 트랙",
+    "birthYear": "출생 연도",
+    "wheelBase": "휠 베이스",
+    "pedal": "페달",
+    "instagram": "Instagram",
+    "equipment": "장비",
+    "profile": "프로필",
+    "raceHistory": "참가 경기",
+    "noRaces": "아직 기록된 참가 경기가 없습니다."
+  },
+  "schedule": {
+    "title": "RACE SCHEDULE",
+    "desc": "예정된 레이스와 엔듀런스 이벤트",
+    "upcoming": "예정 경기",
+    "completed": "완료된 경기",
+    "emptyUpcoming": "예정된 경기가 없습니다.",
+    "viewResults": "전적 보기"
+  },
+  "results": {
+    "title": "RACE RESULTS",
+    "desc": "완료된 경기의 기록",
+    "date": "날짜",
+    "event": "이벤트",
+    "class": "클래스",
+    "drivers": "드라이버",
+    "position": "순위",
+    "qualifying": "예선",
+    "empty": "기록된 경기 결과가 없습니다."
+  },
+  "race": {
+    "circuit": "서킷",
+    "length": "경기 길이",
+    "platform": "참가 플랫폼",
+    "carClass": "차량 / 클래스",
+    "entryDrivers": "출전 드라이버",
+    "entryCars": "출전 차량",
+    "series": "시리즈",
+    "startsAt": "경기 시작",
+    "description": "경기 소개",
+    "resultTitle": "RESULT",
+    "overall": "전체 순위",
+    "classPos": "클래스 순위",
+    "qualifying": "예선 순위",
+    "fastestLap": "패스티스트 랩",
+    "incidents": "인시던트",
+    "finishStatus": "완주 여부",
+    "review": "경기 후기",
+    "video": "경기 영상",
+    "relatedNews": "관련 소식",
+    "relatedGallery": "경기 사진",
+    "prevRace": "이전 경기",
+    "nextRace": "다음 경기"
+  },
+  "news": {
+    "title": "NEWS",
+    "desc": "팀 공지, 경기 안내와 활동 소식",
+    "featured": "FEATURED",
+    "category": {
+      "all": "전체",
+      "notice": "팀 공지",
+      "race": "경기 안내",
+      "result": "경기 결과",
+      "activity": "팀 활동",
+      "member": "멤버 소식"
+    },
+    "author": "작성자",
+    "prevPost": "이전 글",
+    "nextPost": "다음 글",
+    "relatedRace": "관련 경기",
+    "empty": "등록된 소식이 없습니다."
+  },
+  "gallery": {
+    "title": "GALLERY",
+    "desc": "차량, 경기와 팀 활동의 기록",
+    "empty": "등록된 이미지가 없습니다.",
+    "lightboxClose": "닫기",
+    "lightboxPrev": "이전 이미지",
+    "lightboxNext": "다음 이미지"
+  },
+  "join": {
+    "title": "JOIN US",
+    "headline": "함께 달릴 드라이버를 찾습니다",
+    "desc": "TRL Racing은 현재의 실력보다 심레이싱에 대한 열정과 성장 의지를 먼저 봅니다. 꾸준히 연습하고 피드백을 받아들이며 팀과 함께 발전할 수 있는 드라이버를 기다립니다.",
+    "recruiting": "모집 중",
+    "notRecruiting": "모집 마감",
+    "conditionsTitle": "이런 분을 기다립니다",
+    "condition1": "iRacing 기반으로 꾸준히 활동할 수 있는 분",
+    "condition2": "경험과 데이터를 팀과 공유할 수 있는 분",
+    "condition3": "깨끗하고 존중하는 레이스를 지향하는 분",
+    "contactTitle": "지원 방법",
+    "contactDesc": "아래 채널로 연락해 주세요.",
+    "cta": "지원하기"
+  },
+  "footer": {
+    "fullName": "TorqueLINE Racing",
+    "slogan": "Race Together. Improve Together.",
+    "tagline": "대한민국 심레이싱 팀",
+    "linksTitle": "MENU",
+    "socialTitle": "SOCIAL",
+    "contact": "문의",
+    "copyright": "© {year} TRL Racing. All rights reserved."
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "desc": "요청하신 페이지가 존재하지 않거나 이동되었습니다.",
+    "backHome": "홈으로 돌아가기"
+  }
+}

@@ -1,0 +1,133 @@
+/* design.md §12.1 — 멤버 카드 */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--trl-charcoal);
+  border: 1px solid var(--trl-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  overflow: hidden;
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: rgba(232, 74, 37, 0.65);
+  transform: translateY(-2px);
+}
+
+/* 팀 리더 — 오렌지 상단 바 (금색·왕관 금지) */
+.leader {
+  border-top: 3px solid var(--trl-orange);
+}
+
+.leaderLabel {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 2;
+  font-family: var(--font-data);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--trl-orange);
+  border: 1px solid var(--trl-orange-muted);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+}
+
+/* 번호 워터마크 (design.md §8.4) */
+.watermark {
+  position: absolute;
+  top: -0.18em;
+  right: var(--space-3);
+  font-family: var(--font-brand), var(--font-display);
+  font-size: 7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--trl-white);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+.imageWrap {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: var(--space-4);
+}
+
+.image {
+  width: 78%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.imagePlaceholder {
+  width: 60%;
+  aspect-ratio: 1;
+  border: 1px dashed var(--trl-gray-700);
+  border-radius: 50%;
+}
+
+.number {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  color: var(--trl-orange);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--trl-white);
+  margin-top: var(--space-2);
+  text-transform: uppercase;
+}
+
+.field {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--trl-gray-500);
+  margin-top: var(--space-1);
+  text-transform: uppercase;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--trl-border);
+}
+
+.statLabel {
+  font-family: var(--font-data);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--trl-gray-500);
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--trl-gray-100);
+  margin-top: var(--space-1);
+}

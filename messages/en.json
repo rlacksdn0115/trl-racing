@@ -1,0 +1,225 @@
+{
+  "meta": {
+    "title": "TRL Racing — TorqueLINE Racing",
+    "description": "TRL Racing is a South Korean sim racing team competing on iRacing, growing together by sharing experience and data. Race Together. Improve Together."
+  },
+  "nav": {
+    "about": "About",
+    "members": "Members",
+    "races": "Races",
+    "schedule": "Schedule",
+    "results": "Results",
+    "news": "News",
+    "gallery": "Gallery",
+    "join": "JOIN US",
+    "menu": "Menu",
+    "close": "Close",
+    "langToggle": "KOR",
+    "langToggleAria": "한국어로 전환"
+  },
+  "common": {
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "viewDetail": "View Detail",
+    "backToList": "Back to List",
+    "empty": "No content yet."
+  },
+  "hero": {
+    "eyebrow": "SIM RACING TEAM · EST. 2025",
+    "subLabel": "TORQUELINE RACING",
+    "slogan": "Race Together. Improve Together.",
+    "intro": "A South Korean sim racing team growing together on iRacing by sharing experience and data.",
+    "scroll": "SCROLL"
+  },
+  "raceStatus": {
+    "upcoming": "Upcoming",
+    "live": "Live",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "nextRace": {
+    "label": "NEXT OFFICIAL RACE",
+    "days": "DAYS",
+    "hours": "HRS",
+    "minutes": "MIN",
+    "seconds": "SEC",
+    "circuit": "Circuit",
+    "length": "Race Length",
+    "platform": "Platform",
+    "lineup": "Lineup",
+    "carClass": "Car / Class",
+    "startsAt": "Race Start",
+    "noRace": "No upcoming races.",
+    "countdownAria": "Time until race start"
+  },
+  "home": {
+    "about": {
+      "no": "01",
+      "label": "ABOUT",
+      "title": "WHO WE ARE",
+      "desc": "A South Korean sim racing team that races and grows together"
+    },
+    "members": {
+      "no": "02",
+      "label": "MEMBERS",
+      "title": "TEAM DRIVERS",
+      "desc": "The drivers of TRL Racing"
+    },
+    "results": {
+      "no": "03",
+      "label": "RESULTS",
+      "title": "RECENT RESULTS",
+      "desc": "Latest race records"
+    },
+    "news": {
+      "no": "04",
+      "label": "NEWS",
+      "title": "LATEST NEWS",
+      "desc": "Latest updates from TRL Racing"
+    },
+    "gallery": {
+      "no": "05",
+      "label": "GALLERY",
+      "title": "MOMENTS",
+      "desc": "Moments on track"
+    }
+  },
+  "about": {
+    "title": "About",
+    "heroLabel": "ABOUT TRL RACING",
+    "identity": "TRL Racing is a South Korean sim racing team whose goal is to race together and grow together. We are not a team chasing lap times alone — what matters most to us is the process of becoming better drivers by sharing experience and data.",
+    "activity": "Centered on iRacing, we compete in a wide range of races and endurance events, built on teamwork, consistency, and a clean racing culture. Every race is a new challenge, and we deliver our best results through thorough preparation and steady practice.",
+    "culture": "TRL Racing values passion over current skill. We respect each other, learn together, and believe we become a stronger team by pushing past our limits. We will keep challenging ourselves to compete beyond Korea, on the world stage.",
+    "philosophyTitle": "TEAM PHILOSOPHY",
+    "philosophy1Title": "Race Together",
+    "philosophy1": "We practice and race together rather than playing alone, considering the whole team's results and growth while fulfilling each role.",
+    "philosophy2Title": "Improve Together",
+    "philosophy2": "Beyond lap times and standings, we value the process of improvement — sharing driving experience, strategy, setups, and data to help each other get faster.",
+    "philosophy3Title": "Race Clean",
+    "philosophy3": "We respect rival drivers and maintain a fair, clean racing culture, building results through consistent and responsible driving.",
+    "activityTitle": "ACTIVITY",
+    "activity1Title": "iRacing Sim Racing",
+    "activity1": "Team training and competition based on iRacing's cars, circuits, official races, and community events.",
+    "activity2Title": "Endurance Events",
+    "activity2": "In long endurance races we execute team-level racing: driver cooperation, consistent lap times, stint management, and strategy.",
+    "activity3Title": "Data Sharing",
+    "activity3": "We share lap times, telemetry, racing lines, setups, and strategy to raise the whole team's competitiveness.",
+    "valuesTitle": "TEAM VALUES",
+    "values": "Teamwork · Growth · Consistency · Respect · Clean Racing",
+    "visionTitle": "VISION",
+    "vision": "To grow into a sim racing team that competes on the world stage, beyond South Korea."
+  },
+  "member": {
+    "listTitle": "TEAM DRIVERS",
+    "listDesc": "The on-road drivers of TRL Racing",
+    "role": { "driver": "Driver", "leader": "Team Leader" },
+    "teamLeader": "TEAM LEADER",
+    "favoriteCar": "Favorite Car",
+    "favoriteTrack": "Favorite Track",
+    "birthYear": "Born",
+    "wheelBase": "Wheel Base",
+    "pedal": "Pedal",
+    "instagram": "Instagram",
+    "equipment": "Equipment",
+    "profile": "Profile",
+    "raceHistory": "Race History",
+    "noRaces": "No recorded races yet."
+  },
+  "schedule": {
+    "title": "RACE SCHEDULE",
+    "desc": "Upcoming races and endurance events",
+    "upcoming": "Upcoming",
+    "completed": "Completed",
+    "emptyUpcoming": "No upcoming races.",
+    "viewResults": "View Results"
+  },
+  "results": {
+    "title": "RACE RESULTS",
+    "desc": "Records of completed races",
+    "date": "Date",
+    "event": "Event",
+    "class": "Class",
+    "drivers": "Drivers",
+    "position": "Pos",
+    "qualifying": "Qual",
+    "empty": "No race results yet."
+  },
+  "race": {
+    "circuit": "Circuit",
+    "length": "Race Length",
+    "platform": "Platform",
+    "carClass": "Car / Class",
+    "entryDrivers": "Drivers",
+    "entryCars": "Cars",
+    "series": "Series",
+    "startsAt": "Race Start",
+    "description": "About This Race",
+    "resultTitle": "RESULT",
+    "overall": "Overall",
+    "classPos": "Class",
+    "qualifying": "Qualifying",
+    "fastestLap": "Fastest Lap",
+    "incidents": "Incidents",
+    "finishStatus": "Finish",
+    "review": "Race Review",
+    "video": "Race Video",
+    "relatedNews": "Related News",
+    "relatedGallery": "Race Photos",
+    "prevRace": "Previous Race",
+    "nextRace": "Next Race"
+  },
+  "news": {
+    "title": "NEWS",
+    "desc": "Team notices, race announcements, and activity updates",
+    "featured": "FEATURED",
+    "category": {
+      "all": "All",
+      "notice": "Notice",
+      "race": "Race",
+      "result": "Result",
+      "activity": "Activity",
+      "member": "Member"
+    },
+    "author": "Author",
+    "prevPost": "Previous",
+    "nextPost": "Next",
+    "relatedRace": "Related Race",
+    "empty": "No news yet."
+  },
+  "gallery": {
+    "title": "GALLERY",
+    "desc": "Cars, races, and team activities",
+    "empty": "No images yet.",
+    "lightboxClose": "Close",
+    "lightboxPrev": "Previous image",
+    "lightboxNext": "Next image"
+  },
+  "join": {
+    "title": "JOIN US",
+    "headline": "Looking for drivers to race with us",
+    "desc": "TRL Racing values passion and the will to improve over current skill. We are waiting for drivers who practice consistently, embrace feedback, and grow together with the team.",
+    "recruiting": "Recruiting",
+    "notRecruiting": "Closed",
+    "conditionsTitle": "Who we are looking for",
+    "condition1": "Drivers who can stay active on iRacing",
+    "condition2": "Drivers willing to share experience and data with the team",
+    "condition3": "Drivers who race clean and with respect",
+    "contactTitle": "How to Apply",
+    "contactDesc": "Reach out through the channels below.",
+    "cta": "Apply"
+  },
+  "footer": {
+    "fullName": "TorqueLINE Racing",
+    "slogan": "Race Together. Improve Together.",
+    "tagline": "South Korean Sim Racing Team",
+    "linksTitle": "MENU",
+    "socialTitle": "SOCIAL",
+    "contact": "Contact",
+    "copyright": "© {year} TRL Racing. All rights reserved."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "desc": "The page you requested does not exist or has been moved.",
+    "backHome": "Back to Home"
+  }
+}

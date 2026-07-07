@@ -1,0 +1,45 @@
+.units {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(54px, 1fr));
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.value {
+  font-family: var(--font-brand), var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--trl-white);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.label {
+  font-family: var(--font-data);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--trl-gray-500);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --bp-md 미만: 숫자 크기 축소 (design.md §10.3 mobile) */
+@media (max-width: 767px) {
+  .value {
+    font-size: clamp(1.1rem, 5.5vw, 1.5rem);
+  }
+
+  .units {
+    grid-template-columns: repeat(4, minmax(46px, 1fr));
+    gap: var(--space-2);
+  }
+}
