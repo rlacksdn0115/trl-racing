@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 /** Brand — TRL Racing 로고/타이틀 (public/Ethnocentric-Regular.otf) */
 export const fontBrand = localFont({
   src: '../../public/Ethnocentric-Regular.otf',
-  weight: '400',
+  weight: '500',
   variable: '--font-brand',
   display: 'swap',
 });
