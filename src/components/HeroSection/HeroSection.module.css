@@ -85,12 +85,12 @@
   letter-spacing: 0.01em;
   margin-top: var(--space-4);
   text-transform: uppercase;
+  width: max-content;
 }
 
 .titleWhite,
 .titleOrange {
   font-family: var(--font-brand), var(--font-display);
-  white-space: nowrap;
 }
 
 .titleWhite {
