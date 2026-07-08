@@ -79,13 +79,12 @@
   display: flex;
   flex-direction: column;
   font-family: var(--font-display);
-  font-size: clamp(3.75rem, 8vw, 10rem); /* --text-hero, 모바일 최소 3.75rem */
+  font-size: clamp(3.75rem, 6vw, 10rem); /* --text-hero, 모바일 최소 3.75rem */
   font-weight: 700;
-  line-height: 1;
+  line-height: 0.88;
   letter-spacing: 0.01em;
   margin-top: var(--space-4);
   text-transform: uppercase;
-  width: max-content;
 }
 
 .titleWhite,
@@ -99,6 +98,7 @@
 
 .titleOrange {
   color: var(--trl-orange);
+  white-space: nowrap;
 }
 
 .subLabel {
