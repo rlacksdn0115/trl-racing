@@ -34,7 +34,7 @@ export function RaceCountdown({ startsAt }: { startsAt: string }) {
     { key: 'days', value: time?.days },
     { key: 'hours', value: time?.hours },
     { key: 'minutes', value: time?.minutes },
-    { key: 'seconds', value: time?.seconds },
+    //{ key: 'seconds', value: time?.seconds },
   ] as const;
 
   return (
