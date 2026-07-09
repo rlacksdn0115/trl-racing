@@ -10,7 +10,7 @@ function diff(target: string) {
     days: Math.floor(total / 86_400_000),
     hours: Math.floor((total / 3_600_000) % 24),
     minutes: Math.floor((total / 60_000) % 60),
-    seconds: Math.floor((total / 1_000) % 60),
+    //seconds: Math.floor((total / 1_000) % 60),
     done: total === 0,
   };
 }
