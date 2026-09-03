@@ -20,7 +20,7 @@ npm install
 npm run dev   # http://localhost:3000
 ```
 
-Supabase 환경 변수가 없으면 사이트는 **내장 시드 데이터**(멤버 5명, 경기 3건, 소식 3건)로
+Supabase 환경 변수가 없으면 사이트는 **내장 시드 데이터**(멤버, 경기, 소식)로
 렌더링됩니다. 실제 운영과 CMS 사용은 아래 Supabase 설정이 필요합니다.
 
 ---
