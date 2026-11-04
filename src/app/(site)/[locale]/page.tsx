@@ -42,7 +42,9 @@ export default async function HomePage() {
 
   const partners = readPartners(partnerSettings).filter(
     (partner) =>
-      partner.visible === 'true' && partner.name.trim(),
+      partner.visible === 'true' &&
+      partner.name.trim() &&
+      partner.logo?.trim(),
   );
 
   function partnerText(
@@ -107,6 +109,7 @@ export default async function HomePage() {
             title={t('about.title')}
             desc={t('about.desc')}
           />
+
           <blockquote className={styles.aboutQuote}>
             Race Together.
             <br />
@@ -114,7 +117,9 @@ export default async function HomePage() {
               Improve Together.
             </span>
           </blockquote>
+
           <p className={styles.aboutText}>{tAbout('identity')}</p>
+
           <Link href="/about" className={styles.moreLink}>
             {tCommon('readMore')}
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
@@ -131,11 +136,13 @@ export default async function HomePage() {
             title={t('members.title')}
             desc={t('members.desc')}
           />
+
           <div className={styles.driverGrid}>
             {members.map((member) => (
               <DriverCard key={member.id} member={member} />
             ))}
           </div>
+
           <Link href="/members" className={styles.moreLink}>
             {tCommon('viewAll')}
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
@@ -152,7 +159,9 @@ export default async function HomePage() {
             title={t('results.title')}
             desc={t('results.desc')}
           />
+
           <RaceResultTable races={recentResults} />
+
           <Link href="/results" className={styles.moreLink}>
             {tCommon('viewAll')}
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
@@ -169,11 +178,13 @@ export default async function HomePage() {
             title={t('news.title')}
             desc={t('news.desc')}
           />
+
           {news.length > 0 && (
             <div className={styles.newsGrid}>
               <div className={styles.newsFeatured}>
                 <NewsCard post={news[0]} featured />
               </div>
+
               <div className={styles.newsRest}>
                 {news.slice(1, 4).map((post) => (
                   <NewsCard key={post.id} post={post} />
@@ -181,6 +192,7 @@ export default async function HomePage() {
               </div>
             </div>
           )}
+
           <Link href="/news" className={styles.moreLink}>
             {tCommon('viewAll')}
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
@@ -197,7 +209,9 @@ export default async function HomePage() {
             title={t('gallery.title')}
             desc={t('gallery.desc')}
           />
+
           <GalleryGrid images={gallery} />
+
           <Link href="/gallery" className={styles.moreLink}>
             {tCommon('viewAll')}
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
@@ -205,7 +219,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 스폰서 소개 · 모집 */}
+      {/* 스폰서 로고 · 모집 */}
       {partnerSettings.partners_visible === 'true' && (
         <section
           id="partners"
@@ -223,167 +237,108 @@ export default async function HomePage() {
               }
             />
 
-            <div className={styles.partnerList}>
-              {partners.map((partner) => {
-                const description = partnerText(
-                  partner,
-                  'description',
-                );
-                const activities = partnerText(
-                  partner,
-                  'activities',
-                );
-                const website = safeUrl(partner.url);
+            {/* 실제 등록된 로고만 표시 */}
+            {partners.length > 0 && (
+              <div className={styles.partnerLogoGrid}>
+                {partners.map((partner) => {
+                  const website = safeUrl(partner.url);
 
-                return (
-                  <article
-                    key={partner.id}
-                    className={styles.partnerCard}
-                  >
-                    <div className={styles.partnerLogo}>
-                      {partner.logo ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={partner.logo}
-                          alt={`${partner.name} logo`}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <strong>{partner.name}</strong>
-                      )}
+                  const logo = (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      loading="lazy"
+                    />
+                  );
+
+                  return website ? (
+                    <a
+                      key={partner.id}
+                      href={website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.partnerLogoTile}
+                      aria-label={`${partner.name} ${
+                        isKo ? '홈페이지 방문' : 'website'
+                      }`}
+                    >
+                      {logo}
+                    </a>
+                  ) : (
+                    <div
+                      key={partner.id}
+                      className={styles.partnerLogoTile}
+                    >
+                      {logo}
                     </div>
+                  );
+                })}
+              </div>
+            )}
 
-                    <div className={styles.partnerDetails}>
-                      <span className={styles.partnerBadge}>
-                        OFFICIAL PARTNER
-                      </span>
-
-                      <h3>{partner.name}</h3>
-
-                      {description && <p>{description}</p>}
-
-                      {(partner.since || activities) && (
-                        <dl className={styles.partnerMeta}>
-                          {partner.since && (
-                            <div>
-                              <dt>PARTNER SINCE</dt>
-                              <dd>{partner.since}</dd>
-                            </div>
-                          )}
-                          {activities && (
-                            <div>
-                              <dt>
-                                {isKo
-                                  ? '함께하는 곳'
-                                  : 'TOGETHER ON'}
-                              </dt>
-                              <dd>{activities}</dd>
-                            </div>
-                          )}
-                        </dl>
-                      )}
-
-                      {website && (
-                        <a
-                          className={styles.partnerLink}
-                          href={website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {partner.name}{' '}
-                          {isKo ? '방문하기' : 'Visit'}
-                          <ArrowRight size={18} aria-hidden />
-                        </a>
-                      )}
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-
+            {/* 주황색 모집 배너 */}
             {partnerSettings.partner_recruiting === 'true' && (
-              <>
-                <div className={styles.partnerVacancies}>
-                  {Array.from(
-                    { length: Math.max(0, 3 - partners.length) },
-                    (_, index) => (
-                      <a
-                        key={index}
-                        className={styles.partnerVacancy}
-                        href="#partner-inquiry"
-                      >
-                        <strong>YOUR LOGO HERE</strong>
-                        <span>
-                          {isKo
-                            ? '파트너 모집 중'
-                            : 'Partners welcome'}
-                        </span>
-                      </a>
-                    ),
-                  )}
-                </div>
-
-                <div
-                  id="partner-inquiry"
-                  className={styles.partnerRecruitment}
-                >
-                  <div>
-                    <h3>
-                      {partnerText(
-                        partnerSettings,
-                        'partner_heading',
-                      )}
-                    </h3>
-                    <p>
-                      {partnerText(
-                        partnerSettings,
-                        'partner_intro',
-                      )}
-                    </p>
-                  </div>
-
-                  {partnerStats.some(
-                    ({ key }) => partnerSettings[key],
-                  ) && (
-                    <dl className={styles.partnerStats}>
-                      {partnerStats.map(
-                        ({ key, label }) =>
-                          partnerSettings[key] && (
-                            <div key={key}>
-                              <dd>
-                                {partnerSettings[key]}
-                                {key === 'partner_finish_rate'
-                                  ? '%'
-                                  : ''}
-                              </dd>
-                              <dt>{label}</dt>
-                            </div>
-                          ),
-                      )}
-                    </dl>
-                  )}
-
-                  <div>
-                    {partnerContact ? (
-                      <a
-                        className={styles.partnerContact}
-                        href={partnerContact}
-                      >
-                        {isKo
-                          ? '파트너십 문의'
-                          : 'Partnership inquiry'}
-                        <ArrowRight size={18} aria-hidden />
-                      </a>
-                    ) : (
-                      <span>
-                        {isKo
-                          ? '문의 채널 준비 중'
-                          : 'Contact channel coming soon'}
-                      </span>
+              <div
+                id="partner-inquiry"
+                className={styles.partnerRecruitment}
+              >
+                <div>
+                  <h3>
+                    {partnerText(
+                      partnerSettings,
+                      'partner_heading',
                     )}
-                  </div>
+                  </h3>
+                  <p>
+                    {partnerText(
+                      partnerSettings,
+                      'partner_intro',
+                    )}
+                  </p>
                 </div>
-              </>
+
+                {partnerStats.some(
+                  ({ key }) => partnerSettings[key],
+                ) && (
+                  <dl className={styles.partnerStats}>
+                    {partnerStats.map(
+                      ({ key, label }) =>
+                        partnerSettings[key] && (
+                          <div key={key}>
+                            <dd>
+                              {partnerSettings[key]}
+                              {key === 'partner_finish_rate'
+                                ? '%'
+                                : ''}
+                            </dd>
+                            <dt>{label}</dt>
+                          </div>
+                        ),
+                    )}
+                  </dl>
+                )}
+
+                <div>
+                  {partnerContact ? (
+                    <a
+                      className={styles.partnerContact}
+                      href={partnerContact}
+                    >
+                      {isKo
+                        ? '파트너십 문의'
+                        : 'Partnership inquiry'}
+                      <ArrowRight size={18} aria-hidden />
+                    </a>
+                  ) : (
+                    <span>
+                      {isKo
+                        ? '문의 채널 준비 중'
+                        : 'Contact channel coming soon'}
+                    </span>
+                  )}
+                </div>
+              </div>
             )}
           </div>
         </section>
