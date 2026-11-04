@@ -9,6 +9,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { bool, dateStr, kstDateTimeToIso, num, str } from './form';
+import { PARTNER_DEFAULTS } from '@/types/content';
 
 async function requireUser() {
   const supabase = createClient();
@@ -273,4 +274,147 @@ export async function saveSettings(fd: FormData) {
   }));
   const { error } = await supabase.from('settings').upsert(rows);
   done('/admin/settings', error?.message);
+}
+
+/* ---------- 스폰서 소개 · 모집 설정 ---------- */
+
+export async function savePartnerSettings(fd: FormData) {
+  const supabase = await requireUser();
+  const rows: { key: string; value: string }[] = [];
+
+  for (const key of Object.keys(PARTNER_DEFAULTS).filter(
+    (key) => !/^partner_[123]_/.test(key),
+  )) {
+    const value =
+      key.endsWith('_visible') || key === 'partner_recruiting'
+        ? String(bool(fd, key))
+        : (str(fd, key) ?? '');
+
+    if (key.endsWith('_url') && value) {
+      try {
+        const url = new URL(value);
+        const allowedProtocols =
+          key === 'partner_contact_url'
+            ? ['http:', 'https:', 'mailto:']
+            : ['http:', 'https:'];
+
+        if (!allowedProtocols.includes(url.protocol)) {
+          throw new Error('Invalid URL protocol');
+        }
+      } catch {
+        done(
+          '/admin/partners',
+          '문의 링크는 http(s) 또는 mailto 주소를 입력하세요.',
+        );
+      }
+    }
+
+    rows.push({ key, value });
+  }
+
+  const { error } = await supabase.from('settings').upsert(rows);
+  done('/admin/partners', error?.message);
+}
+
+/* ---------- 스폰서 등록 · 수정 ---------- */
+
+export async function savePartner(fd: FormData) {
+  const supabase = await requireUser();
+  const id = str(fd, 'id');
+
+  if (
+    id &&
+    !/^partner_record_[a-zA-Z0-9-]+$/.test(id) &&
+    !/^legacy-[123]$/.test(id)
+  ) {
+    done('/admin/partners', '잘못된 파트너 ID입니다.');
+  }
+
+  const fields = [
+    'name',
+    'logo',
+    'url',
+    'since',
+    'description_ko',
+    'description_en',
+    'activities_ko',
+    'activities_en',
+  ];
+
+  const partner = Object.fromEntries(
+    fields.map((key) => [key, str(fd, key) ?? '']),
+  );
+
+  if (!partner.name) {
+    done('/admin/partners', '파트너 이름은 필수입니다.');
+  }
+
+  if (partner.url) {
+    try {
+      const url = new URL(partner.url);
+
+      if (!['http:', 'https:'].includes(url.protocol)) {
+        throw new Error('Invalid URL protocol');
+      }
+    } catch {
+      done('/admin/partners', '홈페이지는 http(s) 주소를 입력하세요.');
+    }
+  }
+
+  partner.visible = String(bool(fd, 'visible'));
+  partner.sort_order = String(num(fd, 'sort_order') ?? 0);
+
+  // 이전 고정 슬롯 방식으로 저장된 파트너 수정
+  if (id?.startsWith('legacy-')) {
+    const prefix = `partner_${id.slice(-1)}_`;
+
+    const { error } = await supabase.from('settings').upsert(
+      Object.entries(partner).map(([key, value]) => ({
+        key: prefix + key,
+        value,
+      })),
+    );
+
+    done('/admin/partners', error?.message);
+  }
+
+  // 신규 등록 시 ID 생성, 수정 시 기존 ID 사용
+  const key = id || `partner_record_${crypto.randomUUID()}`;
+
+  const { error } = await supabase.from('settings').upsert({
+    key,
+    value: JSON.stringify(partner),
+  });
+
+  done('/admin/partners', error?.message);
+}
+
+/* ---------- 스폰서 삭제 ---------- */
+
+export async function deletePartner(fd: FormData) {
+  const supabase = await requireUser();
+  const id = str(fd, 'id');
+
+  // 이전 고정 슬롯 방식의 데이터 삭제 처리
+  if (id && /^legacy-[123]$/.test(id)) {
+    const prefix = `partner_${id.slice(-1)}_`;
+
+    const { error } = await supabase.from('settings').upsert([
+      { key: prefix + 'name', value: '' },
+      { key: prefix + 'visible', value: 'false' },
+    ]);
+
+    done('/admin/partners', error?.message);
+  }
+
+  if (!id || !/^partner_record_[a-zA-Z0-9-]+$/.test(id)) {
+    done('/admin/partners', '잘못된 파트너 ID입니다.');
+  }
+
+  const { error } = await supabase
+    .from('settings')
+    .delete()
+    .eq('key', id);
+
+  done('/admin/partners', error?.message);
 }
