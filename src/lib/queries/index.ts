@@ -13,6 +13,7 @@ import type {
   SiteSettings,
 } from '@/types/content';
 import * as fallback from './fallback-data';
+import { PARTNER_DEFAULTS } from '@/types/content';
 
 const RACE_SELECT =
   '*, race_results(*), race_members(members(*)), race_cars(cars(*))';
@@ -257,14 +258,41 @@ export async function getGalleryImages(options?: {
 /* ---------- Settings ---------- */
 
 export async function getSettings(): Promise<SiteSettings> {
-  if (!isSupabaseConfigured) return fallback.settings;
-  const { data, error } = await createClient().from('settings').select('key, value');
+  if (!isSupabaseConfigured) {
+    return {
+      ...fallback.settings,
+      partners: {
+        ...PARTNER_DEFAULTS,
+        ...fallback.settings.partners,
+      },
+    };
+  }
+
+  const { data, error } = await createClient()
+    .from('settings')
+    .select('key, value');
+
   if (error) {
     warn('getSettings', error);
-    return fallback.settings;
+
+    return {
+      ...fallback.settings,
+      partners: {
+        ...PARTNER_DEFAULTS,
+        ...fallback.settings.partners,
+      },
+    };
   }
-  const map = Object.fromEntries((data ?? []).map((r) => [r.key, r.value ?? '']));
+
+  const map: Record<string, string> = Object.fromEntries(
+    (data ?? []).map((row) => [row.key, row.value ?? '']),
+  );
+
   return {
+    partners: {
+      ...PARTNER_DEFAULTS,
+      ...map,
+    },
     hero_video_url: map.hero_video_url ?? '',
     recruiting: map.recruiting !== 'false',
     discord_url: map.discord_url ?? '',
