@@ -111,4 +111,5 @@ export interface SiteSettings {
   instagram_url: string;
   youtube_url: string;
   contact_url: string;
+  partners?: Record<string, string>;
 }
