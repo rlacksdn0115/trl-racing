@@ -113,3 +113,77 @@ export interface SiteSettings {
   contact_url: string;
   partners?: Record<string, string>;
 }
+
+/** 스폰서 소개 · 모집 기본 설정 */
+export const PARTNER_DEFAULTS: Record<string, string> = {
+  partners_visible: 'true',
+  partner_recruiting: 'true',
+  partner_heading_ko: 'TRL Racing의 파트너가 되어주세요',
+  partner_heading_en: 'Become a partner of TRL Racing',
+  partner_intro_ko:
+    'iRacing 엔듀런스 무대에서 함께 달릴 파트너를 찾습니다. 리버리와 방송, SNS로 파트너를 소개합니다.',
+  partner_intro_en:
+    'Join us on the iRacing endurance stage through liveries, broadcasts and social media.',
+  partner_contact_url: '',
+  partner_entries: '',
+  partner_podiums: '',
+  partner_finish_rate: '',
+};
+
+export type PartnerEntry = Record<string, string> & {
+  id: string;
+};
+
+/** settings 테이블의 스폰서 데이터를 목록으로 변환 */
+export function readPartners(
+  settings: Record<string, string>,
+): PartnerEntry[] {
+  const entries: PartnerEntry[] = [];
+
+  for (const [key, value] of Object.entries(settings)) {
+    if (!/^partner_record_[a-zA-Z0-9-]+$/.test(key)) continue;
+
+    try {
+      const data = JSON.parse(value);
+
+      if (
+        !data ||
+        typeof data !== 'object' ||
+        typeof data.name !== 'string'
+      ) {
+        continue;
+      }
+
+      const fields = Object.fromEntries(
+        Object.entries(data).filter(
+          ([, fieldValue]) => typeof fieldValue === 'string',
+        ),
+      ) as Record<string, string>;
+
+      entries.push({ ...fields, id: key });
+    } catch {
+      // 잘못된 데이터 하나 때문에 전체 페이지가 멈추지 않도록 처리
+    }
+  }
+
+  // 이전 고정 슬롯 방식으로 저장된 데이터도 읽기
+  for (const slot of [1, 2, 3]) {
+    const prefix = `partner_${slot}_`;
+
+    if (!settings[`${prefix}name`]?.trim()) continue;
+
+    const fields = Object.fromEntries(
+      Object.entries(settings)
+        .filter(([key]) => key.startsWith(prefix))
+        .map(([key, value]) => [key.slice(prefix.length), value]),
+    );
+
+    entries.push({ ...fields, id: `legacy-${slot}` });
+  }
+
+  return entries.sort(
+    (a, b) =>
+      (Number(a.sort_order) || 0) - (Number(b.sort_order) || 0) ||
+      a.id.localeCompare(b.id),
+  );
+}
