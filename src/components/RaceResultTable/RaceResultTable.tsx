@@ -10,6 +10,7 @@ import styles from './RaceResultTable.module.css';
  */
 export function RaceResultTable({ races }: { races: Race[] }) {
   const t = useTranslations('results');
+  const tRace = useTranslations('race');
 
   if (races.length === 0) {
     return <p className={styles.empty}>{t('empty')}</p>;
@@ -27,13 +28,17 @@ export function RaceResultTable({ races }: { races: Race[] }) {
             {t('qualifying')}
           </th>
           <th scope="col" className={styles.posHead}>
-            {t('position')}
+            {tRace('classPos')}
+          </th>
+          <th scope="col" className={styles.posHead}>
+            {tRace('overall')}
           </th>
         </tr>
       </thead>
       <tbody>
         {races.map((race) => {
           const pos = race.result?.overall_pos ?? null;
+          const classPos = race.result?.class_pos ?? null;
           const finishStatus = race.result?.finish_status ?? null;
           return (
             <tr key={race.id} className={styles.row}>
@@ -55,7 +60,13 @@ export function RaceResultTable({ races }: { races: Race[] }) {
                 {formatResultPosition(race.result?.qualifying_pos ?? null, finishStatus)}
               </td>
               <td
-                data-label={t('position')}
+                data-label={tRace('classPos')}
+                className={`${styles.pos} ${styles.finalPos} ${classPos === 1 && !isDnf(finishStatus) ? styles.p1 : ''} ${classPos != null && classPos <= 3 && !isDnf(finishStatus) ? styles.podium : ''}`}
+              >
+                {formatResultPosition(classPos, finishStatus)}
+              </td>
+              <td
+                data-label={tRace('overall')}
                 className={`${styles.pos} ${styles.finalPos} ${pos === 1 && !isDnf(finishStatus) ? styles.p1 : ''} ${pos != null && pos <= 3 && !isDnf(finishStatus) ? styles.podium : ''}`}
               >
                 {formatResultPosition(pos, finishStatus)}
