@@ -120,3 +120,286 @@
     gap: var(--space-5);
   }
 }
+
+/* ---------- 스폰서 소개 ---------- */
+
+.partnersSection {
+  background: var(--trl-black);
+  scroll-margin-top: 120px;
+}
+
+.partnerList {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.partnerCard {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.8fr) minmax(0, 2fr);
+  align-items: center;
+  gap: var(--space-7);
+  padding: var(--space-7);
+  background: var(--trl-charcoal);
+  border: 1px solid var(--trl-border);
+  border-top: 3px solid var(--trl-orange);
+  border-radius: var(--radius-md);
+}
+
+.partnerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 210px;
+  padding: var(--space-5);
+  background: var(--trl-surface);
+  border: 1px dashed var(--trl-border);
+}
+
+.partnerLogo img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+}
+
+.partnerLogo strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.partnerDetails {
+  min-width: 0;
+}
+
+.partnerBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--trl-orange);
+  color: var(--trl-black);
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.partnerDetails h3 {
+  margin-block: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.partnerDetails p {
+  color: var(--trl-gray-300);
+  white-space: pre-line;
+}
+
+.partnerMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--trl-border);
+}
+
+.partnerMeta > div {
+  min-width: 0;
+}
+
+.partnerMeta dt {
+  color: var(--trl-gray-300);
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+}
+
+.partnerMeta dd {
+  margin: var(--space-1) 0 0;
+  color: var(--trl-white);
+  white-space: pre-line;
+}
+
+.partnerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  color: var(--trl-orange);
+  font-weight: 600;
+  transition: color 0.18s ease;
+}
+
+.partnerLink:hover {
+  color: var(--trl-orange-hover);
+}
+
+.partnerLink svg,
+.partnerContact svg {
+  flex-shrink: 0;
+}
+
+/* ---------- 파트너 모집 카드 ---------- */
+
+.partnerVacancies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+}
+
+.partnerVacancies:not(:empty) {
+  margin-top: var(--space-6);
+}
+
+.partnerVacancy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 0;
+  min-height: 160px;
+  padding: var(--space-5);
+  border: 1px dashed var(--trl-border);
+  border-radius: var(--radius-sm);
+  color: var(--trl-gray-300);
+  text-align: center;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.partnerVacancy strong {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: 0.12em;
+}
+
+.partnerVacancy span {
+  font-size: var(--text-sm);
+}
+
+.partnerVacancy:hover {
+  border-color: var(--trl-orange);
+  background: var(--trl-charcoal);
+  color: var(--trl-white);
+}
+
+/* ---------- 파트너십 문의 배너 ---------- */
+
+.partnerRecruitment {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+  padding: var(--space-7);
+  background: var(--trl-orange);
+  color: var(--trl-black);
+  border-radius: var(--radius-md);
+  scroll-margin-top: 120px;
+}
+
+.partnerRecruitment > div:first-child {
+  flex: 1 1 350px;
+  min-width: 0;
+}
+
+.partnerRecruitment h3 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.partnerRecruitment p {
+  white-space: pre-line;
+}
+
+.partnerStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.partnerStats dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.partnerStats dt {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.partnerContact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--trl-black);
+  color: var(--trl-white);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-align: center;
+  transition: background 0.18s ease;
+}
+
+.partnerContact:hover {
+  background: var(--trl-surface-raised);
+}
+
+.partnerRecruitment a:focus-visible {
+  outline: 2px solid var(--trl-black);
+  outline-offset: 4px;
+}
+
+/* ---------- 모바일 ---------- */
+
+@media (max-width: 767px) {
+  .partnerCard {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: var(--space-5);
+  }
+
+  .partnerLogo {
+    min-height: 160px;
+  }
+
+  .partnerLogo img {
+    height: 160px;
+  }
+
+  .partnerVacancies {
+    grid-template-columns: 1fr;
+  }
+
+  .partnerRecruitment {
+    gap: var(--space-5);
+    padding: var(--space-5);
+  }
+
+  .partnerRecruitment > div:first-child {
+    flex-basis: 100%;
+  }
+
+  .partnerRecruitment > div:last-child {
+    width: 100%;
+  }
+
+  .partnerContact {
+    width: 100%;
+  }
+}
