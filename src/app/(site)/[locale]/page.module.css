@@ -418,8 +418,9 @@
   justify-content: center;
   min-width: 0;
   height: 160px;
-  padding: var(--space-5);
-  background: var(--trl-charcoal);
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
   border: 1px solid var(--trl-border);
   border-radius: var(--radius-sm);
 }
