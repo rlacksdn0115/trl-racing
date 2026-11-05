@@ -333,7 +333,7 @@ export default async function HomePage() {
                   ) : (
                     <span>
                       {isKo
-                        ? '문의는 공식 인스타그램을 통해서 부탁드립니다'
+                        ? '파트너십 문의는 공식 인스타그램 DM으로 부탁드립니다.'
                         : 'Contact channel coming soon'}
                     </span>
                   )}
